@@ -5,6 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verificador de Idade</title>
     <style>
+        body {
+            background-color: rgb(57, 129, 238);
+            color: white;
+        }
+        header{
+            text-align: center;
+        }
+        article {
+            margin: auto;
+            background-color: white;
+            padding: 20px;
+            color: black;
+            text-align: center;
+            border-radius: 20px;
+        }
     </style>
 </head>
 <body>
@@ -13,7 +28,6 @@
     </header>
     <main>
         <article id="">
-            
             <div id="">
                 <p>Ano de nascimento
                     <input type="number" name="txtano" id="txtano" min="1">
@@ -46,7 +60,34 @@
                 var fsex = document.getElementsByName('radsex')
                 var idade = ano - Number(fano.value)
                 res.innerHTML = `Idade calculada ${idade}`
+                var genero = ''
+                var img = document.createElement('img')
+                img.setAttribute('id', 'foto')
+                if (fsex[0].checked) {
+                    genero = 'homem'
+                    if (idade > 0 && idade <= 10) {
+                        //criança
+                        img.style.src = ''
+                    }   else if (idade < 21) {
+                        // jovem
+                    }   else if (idade < 50) {
+                        //adulto
+                    }   else if (idade >=50) {
+                        //idoso
+                    }
+                }   else {
+                    genero = 'mulher'
+                    if (idade > 0 && idade <= 10) {
+                        //criança
+                    }   else if (idade < 21) {
+                        // jovem
+                    }   else if (idade < 50) {
+                        //adulto
+                    }   else if (idade >=50) {
+                        //idoso
+                }
                 
+                res.innerHTML = `Detectamos ${genero} com ${idade} anos`
             }
             
        }
