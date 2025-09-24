@@ -3,73 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hora do Dia</title>
+    <title>Verificador de Idade</title>
     <style>
-        header {
-            text-align: center;
-            text-shadow: 0px 0px 2px black;
-        }
-        body {
-            background-color: #ccbb8f;
-            color: white;
-            font: normal 12pt helvetica;
-        }
-        article {
-            width: 90vw;
-            color: black;
-            margin: auto;
-            height: 60vh;
-            background-color: #e4e8e5;
-            display: flex;
-            flex-flow: column-reverse ;
-            gap: 80px;
-            justify-content: center;
-            align-items: center;
-            border-radius: 20px;
-            box-shadow: 0px 0px  5px black;
-        }
-        div#backimage {
-            background-color: white;
-            width: 200px;
-            height: 200px;
-            background-image: url(sunrusing.jpg);
-            border-radius: 50%;
-            background-position: center center;
-            background-size: cover;
-        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Hora do Dia</h1>
+        <h1>Verificador de Idade</h1>
     </header>
     <main>
-        <article id="squidward">
+        <article id="">
             
-            <div id="backimage">
-
+            <div id="">
+                <p>Ano de nascimento
+                    <input type="number" name="txtano" id="txtano" min="1">
+                </p>
+                <p>Sexo:
+                    <input type="radio" name="radsex" id="mas" checked>
+                    <label for="mas">Masculino</label>
+                    <input type="radio" name="radsex" id="fem">
+                    <label for="fem">Feminino</label>
+                </p>
+                <p>
+                    <input type="button" value="verificar" onclick="verificar()">
+                </p>
+            </div>
+            <div id="res">
+                <p>Preencha os dados acima para ver o resultado!</p>
             </div>
         </article>
     </main>
 
     <script>
-        var agora = new Date()
-        var horas = agora.getHours()
-        var minutos = agora.getMinutes()
-        var sqr = document.getElementById('squidward')
-        sqr.innerHTML += `<h2>São exatamente ${horas} horas e ${minutos} minutos...</h2>`
-        var img = document.getElementById('backimage')
-
-        if (horas > 17) {
-            img.style.backgroundImage = 'url(night.jpg)'
-            img.style.backgroundPosition = 'left top'
-
-        }   else if (horas > 12) {
-            img.style.backgroundImage = 'url(afternoon.jpeg)'
-        } else {
-            img.style.backgroundImage = 'url(sunrusing.jpg)'
-        }
-        
+       function verificar() {
+            var data = new Date()
+            var ano = data.getFullYear()
+            var fano = document.getElementById('txtano')
+            var res = document.querySelector('div#res')
+            if (fano.value.length == 0 || Number(fano.value) > ano) {
+                window.alert('Verifique os dados e tente novamente!')
+            }   else {
+                var fsex = document.getElementsByName('radsex')
+                var idade = ano - Number(fano.value)
+                res.innerHTML = `Idade calculada ${idade}`
+                
+            }
+            
+       }
     </script>
 </body>
 </html>
