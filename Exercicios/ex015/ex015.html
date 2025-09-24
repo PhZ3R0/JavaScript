@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hora do Dia</title>
+    <style>
+        header {
+            text-align: center;
+            text-shadow: 0px 0px 2px black;
+        }
+        body {
+            background-color: #ccbb8f;
+            color: white;
+            font: normal 12pt helvetica;
+        }
+        article {
+            width: 90vw;
+            color: black;
+            margin: auto;
+            height: 60vh;
+            background-color: #e4e8e5;
+            display: flex;
+            flex-flow: column-reverse ;
+            gap: 80px;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px;
+            box-shadow: 0px 0px  5px black;
+        }
+        div#backimage {
+            background-color: white;
+            width: 200px;
+            height: 200px;
+            background-image: url(sunrusing.jpg);
+            border-radius: 50%;
+            background-position: center center;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Hora do Dia</h1>
+    </header>
+    <main>
+        <article id="squidward">
+            
+            <div id="backimage">
+
+            </div>
+        </article>
+    </main>
+
+    <script>
+        var agora = new Date()
+        var horas = agora.getHours()
+        var minutos = agora.getMinutes()
+        var sqr = document.getElementById('squidward')
+        sqr.innerHTML += `<h2>São exatamente ${horas} horas e ${minutos} minutos...</h2>`
+        var img = document.getElementById('backimage')
+
+        if (horas > 17) {
+            img.style.backgroundImage = 'url(night.jpg)'
+            img.style.backgroundPosition = 'left top'
+
+        }   else if (horas > 12) {
+            img.style.backgroundImage = 'url(afternoon.jpeg)'
+        } else {
+            img.style.backgroundImage = 'url(sunrusing.jpg)'
+        }
+        
+    </script>
+</body>
+</html>
