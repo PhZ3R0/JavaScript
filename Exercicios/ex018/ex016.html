@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verificador de Idade</title>
+    <title>Analisador de Números</title>
     <style>
         body {
             background-color: rgb(57, 129, 238);
@@ -21,25 +21,33 @@
             text-align: center;
             border-radius: 20px;
         }
+        select {
+            width: 150px;
+            
+        }
+        div#res {
+            text-align: left;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Tabuada</h1>
+        <h1>Analisador de Números</h1>
     </header>
     <main>
         <article id="quadrado">
             <div id="dados">
-                
+                <p>Número (entre 1 e 100): 
+                    <input type="number" name="num" id="num">
+                    <input type="button" value="Adicionar" id="add" onclick="AddNumber()">
+                </p>
             </div>
             <div id="res">
-
+                <select name="" id="sel" size="10"></select>
             </div>
         </article>
     </main>
 
-    <script>
-
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
